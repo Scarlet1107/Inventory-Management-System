@@ -20,10 +20,12 @@ const todoList = (props: Props) => {
   return (
     <div className="flex justify-center mt-2">
       <ul className="mx-auto">
-        {todos.map((todo) => (
+        {todos.map((todo, index) => (
           <div
             key={todo.id}
-            className="text-xl font-medium bg-orange-200 flex justify-between mt-4 space-x-2 px-2"
+            className={`text-xl font-medium flex justify-between my-3 p-2 space-x-2 px-2 ${
+              index % 2 === 0 ? "bg-orange-100" : "bg-blue-100"
+            }`}
           >
             <div className="">✅️{todo.title}</div>
             <span
