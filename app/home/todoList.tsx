@@ -1,7 +1,6 @@
 import React from "react";
 import { Todo } from "@/utils/interface";
 import { deleteTodo, getAllTodos } from "@/utils/supabaseFunctions";
-import { PostgrestSingleResponse } from "@supabase/supabase-js";
 
 type Props = {
   todos: Todo[];
