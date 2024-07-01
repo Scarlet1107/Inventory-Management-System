@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { addTodo, getAllTodos } from "../../utils/supabaseFunctions";
 import TodoList from "./todoList";
-import Link from 'next/link'
+import Link from "next/link";
 
 export default function Home() {
   const [todos, setTodos] = useState<any>([]);
@@ -31,7 +31,9 @@ export default function Home() {
     <main>
       <header className="flex justify-around p-3 bg-blue-100">
         <h1 className="text-4xl">Supabase Todo App</h1>
-        <Link href={"/search"} className="text-xl">Todoを検索</Link>
+        <Link href={"/search"} className="text-xl">
+          Todoを検索
+        </Link>
       </header>
       <form
         className="flex justify-center space-x-8 mt-8"
@@ -47,7 +49,7 @@ export default function Home() {
           Add Todo
         </button>
       </form>
-      <TodoList todos={todos} setTodos={setTodos}/>
+      <TodoList todos={todos} setTodos={setTodos} />
     </main>
   );
 }
