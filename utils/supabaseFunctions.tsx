@@ -21,3 +21,13 @@ export const getMatchedTodo = async (title: string) => {
     .ilike("title", `%${title}%`);
   return todos;
 };
+
+
+export const getAllInventory = async () => {
+  const inventory = await supabase.from("inventory").select("*");
+  return inventory;
+};
+
+export const addInventory = async (name: string, price: number, quantity: number, description: string) => {
+  await supabase.from("inventory").insert([{ name: name, price: price, quantity: quantity, description: description }]);
+}

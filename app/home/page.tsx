@@ -1,55 +1,106 @@
 "use client";
 import { useEffect, useState } from "react";
-import { addTodo, getAllTodos } from "../../utils/supabaseFunctions";
-import TodoList from "./todoList";
-import Link from "next/link";
+import { addInventory, getAllInventory } from "../../utils/supabaseFunctions";
+import Header from "./Header";
+import Inventory from "./inventory";
+import DataTableDemo from "./table";
+import { Button } from "@/components/ui/button";
+
 
 export default function Home() {
-  const [todos, setTodos] = useState<any>([]);
-  const [title, setTitle] = useState<string>("");
+
+  const [name, setName] = useState<string>("");
+  const [price, setPrice] = useState<number>(0);
+  const [quantity, setQuantity] = useState<number>(1);
+  const [description, setDescription] = useState<string>("");
+  const [inventories, setInventories] = useState<any>([]);
+
+  // useEffect(() => {
+  //   const getTodos = async () => {
+  //     const todos = await getAllTodos();
+  //     setTodos(todos.data);
+  //     console.log(todos.data);
+  //   };
+  //   getTodos();
+  // }, []);
 
   useEffect(() => {
-    const getTodos = async () => {
-      const todos = await getAllTodos();
-      setTodos(todos.data);
-      console.log(todos.data);
+    const getInventory = async () => {
+      const inventories = await getAllInventory();
+      setInventories(inventories.data);
+      console.log(inventories.data);
     };
-    getTodos();
+    getInventory();
   }, []);
+
+
+  // const handleSubmit = async (e: any) => {
+  //   e.preventDefault();
+  //   if (title) {
+  //     await addTodo(title);
+  //     setTitle("");
+  //     let todos = await getAllTodos();
+  //     setTodos(todos.data);
+  //   }
+  // };
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    if (title) {
-      await addTodo(title);
-      setTitle("");
-      let todos = await getAllTodos();
-      setTodos(todos.data);
+    if (name && price && quantity) {
+      await addInventory(name, price, quantity, description);
+      setName("");
+      setPrice(0);
+      setDescription("");
+      setQuantity(1);
     }
   };
 
+
   return (
     <main>
-      <header className="flex justify-around p-3 bg-blue-100">
-        <h1 className="text-4xl">Supabase Todo App</h1>
-        <Link href={"/search"} className="text-xl">
-          Todoを検索
-        </Link>
-      </header>
+      <Header />
       <form
         className="flex justify-center space-x-8 mt-8"
         onSubmit={(e) => handleSubmit(e)}
       >
+        <label htmlFor="name">名前</label>
         <input
           type="text"
+          id="name"
           className="border border-gray-300 px-4 py-2 rounded-md"
-          onChange={(e) => setTitle(e.target.value)}
-          value={title}
+          onChange={(e) => setName(e.target.value)}
+          value={name}
         />
-        <button className="bg-green-500 text-white px-4 py-2 rounded-md">
-          Add Todo
-        </button>
+        <label htmlFor="price">金額</label>
+        <input
+          type="number"
+          id="price"
+          className="border border-gray-300 px-4 py-2 rounded-md"
+          onChange={(e) => setPrice(Number(e.target.value))}
+          value={price}
+        />
+        <label htmlFor="quantity">数量</label>
+        <input
+          type="number"
+          id="quantity"
+          className="border border-gray-300 px-4 py-2 rounded-md"
+          onChange={(e) => setQuantity(Number(e.target.value))}
+          value={quantity}
+        />
+        <label htmlFor="description">詳細</label>
+        <input
+          type="text"
+          id="description"
+          className="border border-gray-300 px-4 py-2 rounded-md"
+          onChange={(e) => setDescription(e.target.value)}
+          value={description}
+        />
+        <Button className="bg-green-500 hover:bg-green-600 font-bold">
+          Add Inventory
+        </Button>
       </form>
-      <TodoList todos={todos} setTodos={setTodos} />
+      <Inventory inventories={inventories} setInventories={setInventories} />
+      <DataTableDemo />
     </main>
   );
 }

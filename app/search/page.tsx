@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Header from "./Header";
 import React, { useState } from "react";
 import {
   deleteTodo,
@@ -42,14 +43,7 @@ const Page = () => {
 
   return (
     <main>
-      <header className="flex justify-around p-3 bg-blue-100">
-        <Link href={"/home"} className="text-4xl">
-          Supabase Todo App
-        </Link>
-        <Link href={"/home"} className="text-xl">
-          メインページに戻る
-        </Link>
-      </header>
+      <Header />
       <div className="flex justify-center space-x-4 mt-8">
         <input
           type="text"
@@ -71,9 +65,8 @@ const Page = () => {
             matchedTodos.map((todo: Todo, index) => (
               <div
                 key={todo.id}
-                className={`text-xl font-medium flex justify-between my-3 p-2 space-x-2 px-2 ${
-                  index % 2 === 0 ? "bg-orange-100" : "bg-blue-100"
-                }`}
+                className={`text-xl font-medium flex justify-between my-3 p-2 space-x-2 px-2 ${index % 2 === 0 ? "bg-orange-100" : "bg-blue-100"
+                  }`}
               >
                 <div className="">✅️{todo.title}</div>
                 <span
@@ -102,6 +95,3 @@ const Page = () => {
 };
 
 export default Page;
-function preventDefault() {
-  throw new Error("Function not implemented.");
-}

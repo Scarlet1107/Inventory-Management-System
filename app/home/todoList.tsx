@@ -7,6 +7,8 @@ type Props = {
   setTodos: React.Dispatch<any>;
 };
 
+
+
 const todoList = (props: Props) => {
   const { todos, setTodos } = props;
 
@@ -23,11 +25,10 @@ const todoList = (props: Props) => {
         {todos.map((todo, index) => (
           <div
             key={todo.id}
-            className={`text-xl font-medium flex justify-between my-3 p-2 space-x-2 px-2 ${
-              index % 2 === 0 ? "bg-orange-100" : "bg-blue-100"
-            }`}
+            className={`text-xl font-medium flex justify-between my-3 p-2 space-x-2 px-2 ${index % 2 === 0 ? "bg-orange-100" : "bg-blue-100"
+              }`}
           >
-            <div className="">✅️{todo.title}</div>
+            <div>✅️{todo.title}</div>
             <span
               className="cursor-pointer"
               onClick={() => handleDelete(todo.id)}
