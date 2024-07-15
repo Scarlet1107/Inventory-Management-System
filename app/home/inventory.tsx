@@ -37,7 +37,7 @@ const inventory = (props: Props) => {
   return (
     <div className="mt-8 w-full">
       <Table>
-        <TableCaption>これをあとでページネーションにしたい</TableCaption>
+        {/* <TableCaption>これをあとでページネーションにしたい</TableCaption> */}
         <TableHeader>
           <TableRow>
             <TableHead className="w-[100px]">在庫名</TableHead>
