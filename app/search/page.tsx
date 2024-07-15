@@ -44,29 +44,30 @@ const Page = () => {
   return (
     <main>
       <Header />
-      <div className="flex justify-center space-x-4 mt-8">
+      <div className="mt-8 flex justify-center space-x-4">
         <input
           type="text"
           placeholder="検索したいTodoを入力"
           onChange={(e) => handleChangeInput(e)}
-          className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="rounded-md border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
 
         <button
           onClick={() => searchTodo()}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          className="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
         >
           Todoを検索
         </button>
       </div>
-      <div className="flex justify-center mt-2">
+      <div className="mt-2 flex justify-center">
         <ul className="mx-auto">
           {matchedTodos &&
             matchedTodos.map((todo: Todo, index) => (
               <div
                 key={todo.id}
-                className={`text-xl font-medium flex justify-between my-3 p-2 space-x-2 px-2 ${index % 2 === 0 ? "bg-orange-100" : "bg-blue-100"
-                  }`}
+                className={`my-3 flex justify-between space-x-2 p-2 px-2 text-xl font-medium ${
+                  index % 2 === 0 ? "bg-orange-100" : "bg-blue-100"
+                }`}
               >
                 <div className="">✅️{todo.title}</div>
                 <span

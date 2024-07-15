@@ -7,8 +7,6 @@ type Props = {
   setTodos: React.Dispatch<any>;
 };
 
-
-
 const todoList = (props: Props) => {
   const { todos, setTodos } = props;
 
@@ -20,13 +18,14 @@ const todoList = (props: Props) => {
   };
 
   return (
-    <div className="flex justify-center mt-2">
+    <div className="mt-2 flex justify-center">
       <ul className="mx-auto">
         {todos.map((todo, index) => (
           <div
             key={todo.id}
-            className={`text-xl font-medium flex justify-between my-3 p-2 space-x-2 px-2 ${index % 2 === 0 ? "bg-orange-100" : "bg-blue-100"
-              }`}
+            className={`my-3 flex justify-between space-x-2 p-2 px-2 text-xl font-medium ${
+              index % 2 === 0 ? "bg-orange-100" : "bg-blue-100"
+            }`}
           >
             <div>✅️{todo.title}</div>
             <span

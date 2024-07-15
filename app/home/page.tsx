@@ -6,9 +6,7 @@ import Inventory from "./inventory";
 import DataTableDemo from "./table";
 import { Button } from "@/components/ui/button";
 
-
 export default function Home() {
-
   const [name, setName] = useState<string>("");
   const [price, setPrice] = useState<number>(0);
   const [quantity, setQuantity] = useState<number>(1);
@@ -33,7 +31,6 @@ export default function Home() {
     getInventory();
   }, []);
 
-
   // const handleSubmit = async (e: any) => {
   //   e.preventDefault();
   //   if (title) {
@@ -55,27 +52,27 @@ export default function Home() {
     }
   };
 
-
   return (
     <main>
       <Header />
       <form
-        className="flex justify-center space-x-8 mt-8"
+        className="mt-8 flex justify-center space-x-8"
         onSubmit={(e) => handleSubmit(e)}
       >
         <label htmlFor="name">名前</label>
         <input
           type="text"
           id="name"
-          className="border border-gray-300 px-4 py-2 rounded-md"
+          className="rounded-md border border-gray-300 px-4 py-2"
           onChange={(e) => setName(e.target.value)}
           value={name}
         />
+
         <label htmlFor="price">金額</label>
         <input
           type="number"
           id="price"
-          className="border border-gray-300 px-4 py-2 rounded-md"
+          className="rounded-md border border-gray-300 px-4 py-2"
           onChange={(e) => setPrice(Number(e.target.value))}
           value={price}
         />
@@ -83,7 +80,7 @@ export default function Home() {
         <input
           type="number"
           id="quantity"
-          className="border border-gray-300 px-4 py-2 rounded-md"
+          className="rounded-md border border-gray-300 px-4 py-2"
           onChange={(e) => setQuantity(Number(e.target.value))}
           value={quantity}
         />
@@ -91,11 +88,11 @@ export default function Home() {
         <input
           type="text"
           id="description"
-          className="border border-gray-300 px-4 py-2 rounded-md"
+          className="rounded-md border border-gray-300 px-4 py-2"
           onChange={(e) => setDescription(e.target.value)}
           value={description}
         />
-        <Button className="bg-green-500 hover:bg-green-600 font-bold">
+        <Button className="bg-green-500 font-bold hover:bg-green-600">
           Add Inventory
         </Button>
       </form>
