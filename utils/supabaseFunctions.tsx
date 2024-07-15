@@ -31,3 +31,7 @@ export const getAllInventory = async () => {
 export const addInventory = async (name: string, price: number, quantity: number, description: string) => {
   await supabase.from("inventory").insert([{ name: name, price: price, quantity: quantity, description: description }]);
 }
+
+export const deleteInventory = async (id: number) => {
+  await supabase.from("inventory").delete().eq("id", id);
+}
