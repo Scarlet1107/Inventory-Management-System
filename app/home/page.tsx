@@ -74,7 +74,7 @@ export default function Home() {
     <main>
       <Header />
       <form
-        className="lg:flex-row lg:space-x-8 mt-8 flex flex-col justify-center space-y-2"
+        className="mx-4 mt-8 flex flex-col justify-center space-y-2 lg:flex-row lg:space-x-8"
         onSubmit={(e) => handleSubmit(e)}
       >
         <label htmlFor="name">名前</label>
